@@ -8,15 +8,15 @@ namespace IChoosr.Api.Controllers
     public class CameraController : Controller
     {
         [HttpGet]
-        public IEnumerable<Camera> Get()
+        public IEnumerable<CameraModel> Get()
         {
-            return new List<Camera>();
+            return new List<CameraModel>();
         }
 
         [HttpGet]
-        public IEnumerable<Camera> Get(string name)
+        public IEnumerable<CameraModel> Get(string name)
         {
-          return new List<Camera>();
+          return new List<CameraModel>();
         }
   }
 }

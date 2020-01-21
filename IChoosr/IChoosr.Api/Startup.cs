@@ -1,5 +1,6 @@
 using IChoosr.BL.Interface.Camera;
 using IChoosr.BL.Service.Camera;
+using IChoosr.DA;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@ namespace IChoosr.Api
             services.AddCors();
             services.AddMvc();
            
+            services.AddScoped<ICameraRepository, CameraRepository>();
             services.AddScoped<ICameraService, CameraService>();
         }
 

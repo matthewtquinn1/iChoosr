@@ -5,17 +5,16 @@ namespace IChoosr.BL.Tests.Service.Camera
     [TestFixture]
     public class CameraTests
     {
-      [SetUp]
-      public void Setup()
-      {
+        [SetUp]
+        public void Setup()
+        {
 
+        }
+
+        [Test]
+        public void FirstTest_DoNothing()
+        {
+
+        }
       }
-
-      [Test]
-      public void FirstTest_DoNothing()
-      {
-
-      }
-
-    }
 }

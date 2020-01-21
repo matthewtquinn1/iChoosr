@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IChoosr.BL\IChoosr.BL.csproj" />
+    <ProjectReference Include="..\IChoosr.DA\IChoosr.DA.csproj" />
   </ItemGroup>
 
 </Project>

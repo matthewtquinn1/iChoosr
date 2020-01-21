@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IChoosr.DA\IChoosr.DA.csproj" />
+    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>
