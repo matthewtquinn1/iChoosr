@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using IChoosr.BL.Interface.Camera;
 using IChoosr.BL.Model;
 using IChoosr.DA;
@@ -21,6 +22,14 @@ namespace IChoosr.BL.Service.Camera
             var cameras = GetAllCameras();
 
             return cameras;
+        }
+
+        public IEnumerable<CameraModel> GetCamerasByName(string name)
+        {
+            var camera = GetAllCameras()
+                .Where(cam => cam.Name.ToUpper().Contains(name));
+
+            return camera;
         }
 
 

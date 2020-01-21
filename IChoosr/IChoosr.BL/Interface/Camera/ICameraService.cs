@@ -6,5 +6,8 @@ namespace IChoosr.BL.Interface.Camera
     public interface ICameraService
     {
         IEnumerable<CameraModel> GetCameras();
+
+
+        IEnumerable<CameraModel> GetCamerasByName(string name);
     }
 }

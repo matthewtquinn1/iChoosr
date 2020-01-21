@@ -11,15 +11,18 @@ namespace IChoosr.ConsoleApp
         {
             var services = ConfigureServices();
             var serviceProvider = services.BuildServiceProvider();
+            serviceProvider.GetService<CameraApplication>().StartApplication();
         }
 
         private static IServiceCollection ConfigureServices()
         {
           IServiceCollection services = new ServiceCollection();
-          services.AddScoped<ICameraRepository, CameraRepository>();
+          services.AddTransient<ICameraRepository, CameraRepository>();
           services.AddTransient<ICameraService, CameraService>();
 
-          return services;
+          services.AddTransient<CameraApplication>();
+
+            return services;
         }
   }
 }
