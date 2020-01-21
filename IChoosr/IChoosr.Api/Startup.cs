@@ -35,12 +35,12 @@ namespace IChoosr.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
-
             app.UseCors(
               options => options.WithOrigins("http://localhost:4200")
                 .AllowAnyMethod()
                 .AllowAnyHeader());
-    }
+
+            app.UseMvc();
+        }
     }
 }
