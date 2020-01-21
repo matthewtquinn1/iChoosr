@@ -75,6 +75,7 @@ namespace IChoosr.ConsoleApp
             {
                 AddLineSeparator();
                 Console.WriteLine("ID:        " + cam.Id);
+                Console.WriteLine("Full ID:   " + cam.FullId);
                 Console.WriteLine("Name:      " + cam.Name);
                 Console.WriteLine("Latitude:  " + cam.Latitude);
                 Console.WriteLine("Longitude: " + cam.Longitude);

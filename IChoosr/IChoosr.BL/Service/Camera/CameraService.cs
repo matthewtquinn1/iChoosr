@@ -64,14 +64,13 @@ namespace IChoosr.BL.Service.Camera
         {
             var values = line.Split(';');
 
-            var id = line.Substring(0, 10);
-
             var name = values[0]
                 .Remove(0, 10).Trim(' ', '-');
 
             var camera = new CameraModel
             {
-                Id = id,
+                Id = line.Substring(7, 3),
+                FullId = line.Substring(0, 10),
                 Name = name,
                 Latitude = values[1],
                 Longitude = values[2]
