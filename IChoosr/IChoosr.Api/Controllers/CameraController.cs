@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using IChoosr.BL.Interface.Camera;
 using IChoosr.BL.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,16 +8,19 @@ namespace IChoosr.Api.Controllers
     [Route("api/[controller]")]
     public class CameraController : Controller
     {
-        [HttpGet]
-        public IEnumerable<CameraModel> Get()
+        private readonly ICameraService _cameraService;
+
+        public CameraController(ICameraService cameraService)
         {
-            return new List<CameraModel>();
+            _cameraService = cameraService;
         }
 
         [HttpGet]
-        public IEnumerable<CameraModel> Get(string name)
+        public IEnumerable<CameraModel> Get()
         {
-          return new List<CameraModel>();
+            var cameras = _cameraService.GetCameras();
+
+            return cameras;
         }
   }
 }

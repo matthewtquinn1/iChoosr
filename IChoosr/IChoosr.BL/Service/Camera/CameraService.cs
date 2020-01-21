@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using IChoosr.BL.Interface.Camera;
 using IChoosr.BL.Model;
 using IChoosr.DA;
-using IChoosr.DA.Entities;
 
 namespace IChoosr.BL.Service.Camera
 {
@@ -19,16 +18,57 @@ namespace IChoosr.BL.Service.Camera
 
         public IEnumerable<CameraModel> GetCameras()
         {
-            var cameras = GetAllCameras().Select(cam => new CameraModel(cam));
+            var cameras = GetAllCameras();
 
             return cameras;
         }
 
-        public void GetCameraByName(string name)
-        {
 
+        private IEnumerable<CameraModel> GetAllCameras()
+        {
+            var reader = _cameraRepo.GetCameraCsv();
+
+            return GetCamerasFromCsv(reader);
         }
 
-        private IEnumerable<BaseCamera> GetAllCameras() => _cameraRepo.GetCameras();
+        private static IEnumerable<CameraModel> GetCamerasFromCsv(StreamReader reader)
+        {
+            var cameras = new List<CameraModel>();
+            
+            // Ignore header
+            reader.ReadLine();
+
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                
+                if (LineIsValid(line)) cameras.Add(SetupCamera(line));
+            }
+           
+            return cameras;
+        }
+
+        private static bool LineIsValid(string line) => line != null && !line.Contains("ERROR");
+        
+
+        private static CameraModel SetupCamera(string line)
+        {
+            var values = line.Split(';');
+
+            var id = line.Substring(0, 10);
+
+            var name = values[0]
+                .Remove(0, 10).Trim(' ', '-');
+
+            var camera = new CameraModel
+            {
+                Id = id,
+                Name = name,
+                Latitude = values[1],
+                Longitude = values[2]
+            };
+
+            return camera;
+        }
     }
 }

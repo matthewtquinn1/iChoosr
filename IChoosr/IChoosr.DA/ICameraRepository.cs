@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using IChoosr.DA.Entities;
+﻿using System.IO;
 
 namespace IChoosr.DA
 {
     public interface ICameraRepository
     {
-        List<BaseCamera> GetCameras();
+        StreamReader GetCameraCsv();
     }
 }
