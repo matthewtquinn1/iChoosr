@@ -6,7 +6,7 @@ namespace IChoosr.DA
     {
         public StreamReader GetCameraCsv()
         {
-            return new StreamReader(@"D:\Web_workspace\iChoosr\IChoosr\IChoosr.DA\Data\cameras-defb.csv");
+            return new StreamReader(@"C:\temp\cameras-defb.csv");
         }
     }
 }
